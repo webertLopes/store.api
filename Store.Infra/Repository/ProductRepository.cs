@@ -36,8 +36,8 @@ namespace Store.Infra.Repository
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                string sqlQuery = @"INSERT INTO Product(ProductId,[Description],Code,PriceBase, ProductDate,Discount) 
-                                            VALUES (@ProductId, @Description, @Code, @PriceBase, @ProductDate, @Discount)";
+                string sqlQuery = @"INSERT INTO Product(ProductId,[Description],Code,PriceBase, ProductDate,Discount,Image) 
+                                            VALUES (@ProductId, @Description, @Code, @PriceBase, @ProductDate, @Discount, @Image)";
 
                 int rowsAffected = db.Execute(sqlQuery, product);
                 return rowsAffected;

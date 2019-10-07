@@ -10,5 +10,6 @@ namespace Store.Application.Interfaces
     {
         IEnumerable<Product> GetAll();
         string ImageToBase64(IFormFile uploadedFile);
+        int CreateProduct(Product product);
     }
 }

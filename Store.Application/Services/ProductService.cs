@@ -13,7 +13,6 @@ namespace Store.Application.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository productRepository;
-        private string base64String;
 
         public ProductService(IProductRepository productRepository)
         {
@@ -34,6 +33,14 @@ namespace Store.Application.Services
                 return Convert.ToBase64String(fileBytes);
             }
         }
+
+        public int CreateProduct(Product product)
+        {
+            var rowsAffected = productRepository.Create(product);
+            return rowsAffected;
+        }
+
+  
 
 
 
