@@ -1,2 +1,2 @@
 # store
-ddd project store
+ddd project store in progress ...
