@@ -1,0 +1,12 @@
+D:\Store\Store\Store.Application\bin\Debug\netcoreapp2.2\Store.Application.deps.json
+D:\Store\Store\Store.Application\bin\Debug\netcoreapp2.2\Store.Application.dll
+D:\Store\Store\Store.Application\bin\Debug\netcoreapp2.2\Store.Application.pdb
+D:\Store\Store\Store.Application\bin\Debug\netcoreapp2.2\Store.Domain.dll
+D:\Store\Store\Store.Application\bin\Debug\netcoreapp2.2\Store.Domain.pdb
+D:\Store\Store\Store.Application\obj\Debug\netcoreapp2.2\Store.Application.csprojAssemblyReference.cache
+D:\Store\Store\Store.Application\obj\Debug\netcoreapp2.2\Store.Application.csproj.CoreCompileInputs.cache
+D:\Store\Store\Store.Application\obj\Debug\netcoreapp2.2\Store.Application.AssemblyInfoInputs.cache
+D:\Store\Store\Store.Application\obj\Debug\netcoreapp2.2\Store.Application.AssemblyInfo.cs
+D:\Store\Store\Store.Application\obj\Debug\netcoreapp2.2\Store.Application.csproj.CopyComplete
+D:\Store\Store\Store.Application\obj\Debug\netcoreapp2.2\Store.Application.dll
+D:\Store\Store\Store.Application\obj\Debug\netcoreapp2.2\Store.Application.pdb

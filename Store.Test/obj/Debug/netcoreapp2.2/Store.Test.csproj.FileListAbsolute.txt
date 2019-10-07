@@ -1,0 +1,14 @@
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\xunit.runner.reporters.netcoreapp10.dll
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\xunit.runner.utility.netcoreapp10.dll
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.deps.json
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.runtimeconfig.json
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.runtimeconfig.dev.json
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.dll
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.pdb
+D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.csprojAssemblyReference.cache
+D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.csproj.CoreCompileInputs.cache
+D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.AssemblyInfoInputs.cache
+D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.AssemblyInfo.cs
+D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.dll
+D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.pdb

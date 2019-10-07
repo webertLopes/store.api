@@ -1,0 +1,12 @@
+D:\Store\Store\Store.Infra\bin\Debug\netcoreapp2.2\Store.Infra.deps.json
+D:\Store\Store\Store.Infra\bin\Debug\netcoreapp2.2\Store.Infra.dll
+D:\Store\Store\Store.Infra\bin\Debug\netcoreapp2.2\Store.Infra.pdb
+D:\Store\Store\Store.Infra\bin\Debug\netcoreapp2.2\Store.Domain.dll
+D:\Store\Store\Store.Infra\bin\Debug\netcoreapp2.2\Store.Domain.pdb
+D:\Store\Store\Store.Infra\obj\Debug\netcoreapp2.2\Store.Infra.csprojAssemblyReference.cache
+D:\Store\Store\Store.Infra\obj\Debug\netcoreapp2.2\Store.Infra.csproj.CoreCompileInputs.cache
+D:\Store\Store\Store.Infra\obj\Debug\netcoreapp2.2\Store.Infra.AssemblyInfoInputs.cache
+D:\Store\Store\Store.Infra\obj\Debug\netcoreapp2.2\Store.Infra.AssemblyInfo.cs
+D:\Store\Store\Store.Infra\obj\Debug\netcoreapp2.2\Store.Infra.csproj.CopyComplete
+D:\Store\Store\Store.Infra\obj\Debug\netcoreapp2.2\Store.Infra.dll
+D:\Store\Store\Store.Infra\obj\Debug\netcoreapp2.2\Store.Infra.pdb
