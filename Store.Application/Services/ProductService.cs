@@ -1,15 +1,20 @@
-﻿using Store.Application.Interfaces;
+﻿using Microsoft.AspNetCore.Http;
+using Store.Application.Interfaces;
 using Store.Domain.Entities;
 using Store.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Store.Application.Services
 {
     public class ProductService : IProductService
     {
         private readonly IProductRepository productRepository;
+        private string base64String;
+
         public ProductService(IProductRepository productRepository)
         {
             this.productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
@@ -19,6 +24,18 @@ namespace Store.Application.Services
         {
             return productRepository.GetAll();
         }
+
+        public string ImageToBase64(IFormFile uploadedFile)
+        {
+            using (var ms = new MemoryStream())
+            {
+                uploadedFile.CopyTo(ms);
+                var fileBytes = ms.ToArray();
+                return Convert.ToBase64String(fileBytes);
+            }
+        }
+
+
 
     }
 }

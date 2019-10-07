@@ -34,6 +34,8 @@ namespace Store.Api
 
             services.AddSwaggerGen(c =>
             {
+                c.OperationFilter<FileUploadOperation>();
+
                 c.SwaggerDoc("v1",
                     new Info
                     {
@@ -56,6 +58,8 @@ namespace Store.Api
 
                 c.IncludeXmlComments(caminhoXmlDoc);
             });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

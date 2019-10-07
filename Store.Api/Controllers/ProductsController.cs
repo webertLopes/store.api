@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -21,14 +22,20 @@ namespace Store.Api.Controllers
         }
 
         // GET: api/Products
-        [HttpGet]
+        [HttpPost("upload")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetProducts([FromQuery] ProductsGet productsGet)
+        public IActionResult GetImageProduct(IFormFile uploadedFile)
         {
-            return Ok();
+            if (!ModelState.IsValid)            
+                return BadRequest();                     
+
+            var result = productService.ImageToBase64(uploadedFile);
+
+            return Ok(result);
         }
+
 
         // GET: api/Products/5
         [HttpGet("{id}")]
