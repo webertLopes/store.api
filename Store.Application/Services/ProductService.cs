@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Store.Application.Interfaces;
 using Store.Domain.Entities;
+using Store.Domain.Exceptions;
 using Store.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Store.Application.Services
 {
@@ -26,6 +26,11 @@ namespace Store.Application.Services
 
         public string ImageToBase64(IFormFile uploadedFile)
         {
+            if (uploadedFile == null)
+            {
+                throw new ArgumentNullException(nameof(uploadedFile));
+            }
+
             using (var ms = new MemoryStream())
             {
                 uploadedFile.CopyTo(ms);
@@ -36,12 +41,15 @@ namespace Store.Application.Services
 
         public int CreateProduct(Product product)
         {
+            if (product == null)
+            {
+                throw new ArgumentNullException(nameof(product));
+            }
+
             var rowsAffected = productRepository.Create(product);
+
             return rowsAffected;
         }
-
-  
-
 
 
     }

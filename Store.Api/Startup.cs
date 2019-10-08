@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,10 +9,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Store.Application.Interfaces;
 using Store.Application.Services;
+using Store.Domain.Entities;
+using Store.Domain.Exceptions;
 using Store.Domain.Interfaces;
 using Store.Infra.Repository;
 using Swashbuckle.AspNetCore.Swagger;
 using System.IO;
+using System.Linq;
 
 namespace Store.Api
 {
@@ -26,7 +31,7 @@ namespace Store.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2).AddFluentValidation();
 
             var mappingConfig = new MapperConfiguration(mc =>
             {
@@ -34,7 +39,27 @@ namespace Store.Api
             });
 
             IMapper mapper = mappingConfig.CreateMapper();
+
             services.AddSingleton(mapper);
+
+            services.AddSingleton<IValidator<Product>, ProductCoreException>();
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = (context) =>
+                {
+                    var errors = context.ModelState.Values.SelectMany(x => x.Errors.Select(e => e.ErrorMessage)).ToList();
+
+                    var result = new
+                    {
+                        Code = "00009",
+                        Message = "Validation Errors",
+                        Errors = errors
+                    };
+
+                    return new BadRequestObjectResult(result);
+                };
+            });
 
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();

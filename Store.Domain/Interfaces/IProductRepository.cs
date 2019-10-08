@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Store.Domain.Interfaces
 {
-    public interface IProductRepository
+    public interface IProductRepository : IDisposable
     {
         IEnumerable<Product> GetAll();
         Product Find(Guid id);

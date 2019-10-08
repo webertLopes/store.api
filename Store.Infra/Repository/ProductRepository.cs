@@ -60,5 +60,14 @@ namespace Store.Infra.Repository
             }
         }
 
+        public void Dispose()
+        {
+            using (IDbConnection db = new SqlConnection(ConnectionString))
+            {
+                db.Dispose();
+            }
+        }
+
+
     }
 }
