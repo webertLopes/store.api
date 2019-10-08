@@ -4,5 +4,44 @@
         <name>Store.Api</name>
     </assembly>
     <members>
+        <member name="M:Store.Api.Controllers.CustomerController.GetCustomer(Store.Api.Dtos.CustomerGet)">
+            <summary>
+            Search for customers.
+            </summary>
+            <param name="customerGet">
+                Customer base search criteria.
+            </param>
+            <response code="200">Result List.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.CustomerController.GetCustomerById(System.Guid)">
+            <summary>
+            Search for customers by CustomerId.
+            </summary>
+            <param name="id">
+                Customer base search by CustomerId.
+            </param>
+            <response code="200">Result one Customer.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.CustomerController.CreateCustomer(Store.Api.Dtos.CustomerPost)">
+            <summary>
+            Create one Customer
+            </summary>
+            <param name="customerPost">
+                Create one Customer
+            </param>
+            <response code="200">Result 1 if create and 0 not create.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
     </members>
 </doc>

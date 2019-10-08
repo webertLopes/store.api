@@ -30,6 +30,17 @@ namespace Store.Api.Controllers
 
 
         // GET: api/Customer
+        /// <summary>
+        /// Search for customers.
+        /// </summary>
+        /// <param name="customerGet">
+        ///     Customer base search criteria.
+        /// </param>
+        /// <response code="200">Result List.</response>
+        /// <response code="400">
+        ///     Incorrect parameters or usage limit exceeded.
+        /// </response>
+        /// <response code="500">Internal Error</response>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
@@ -46,8 +57,42 @@ namespace Store.Api.Controllers
             return Ok(customerGetResult);
         }
 
+        /// <summary>
+        /// Search for customers by CustomerId.
+        /// </summary>
+        /// <param name="id">
+        ///     Customer base search by CustomerId.
+        /// </param>
+        /// <response code="200">Result one Customer.</response>
+        /// <response code="400">
+        ///     Incorrect parameters or usage limit exceeded.
+        /// </response>
+        /// <response code="500">Internal Error</response>
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetCustomerById(Guid id)
+        {
+            Customer customers = customerService.Find(id);
+
+            CustomerGetResult customerGetResult = mapper.Map<CustomerGetResult>(customers);
+
+            return Ok(customerGetResult);
+        }
 
         // POST: api/Customer
+        /// <summary>
+        /// Create one Customer
+        /// </summary>
+        /// <param name="customerPost">
+        ///     Create one Customer
+        /// </param>
+        /// <response code="200">Result 1 if create and 0 not create.</response>
+        /// <response code="400">
+        ///     Incorrect parameters or usage limit exceeded.
+        /// </response>
+        /// <response code="500">Internal Error</response>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
