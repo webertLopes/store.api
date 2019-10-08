@@ -49,6 +49,7 @@ namespace Store.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult CreateProduct(ProductPost productPost)
         {
@@ -65,7 +66,7 @@ namespace Store.Api.Controllers
 
             if (rows == 0)
             {
-                return BadRequest();
+                return NoContent();
             }
 
             return Ok(rows);
