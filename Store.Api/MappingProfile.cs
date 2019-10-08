@@ -15,6 +15,10 @@ namespace Store.Api
             // Add as many of these lines as you need to map your objects
             CreateMap<ProductPost, Product>();
             CreateMap<Product, ProductPost>();
+            CreateMap<ProductsGet, Product>();
+            CreateMap<Product, ProductsGet>();
+            CreateMap<Product, ProductGetResult>();
+            CreateMap<ProductGetResult, Product>();
         }
     }
 }

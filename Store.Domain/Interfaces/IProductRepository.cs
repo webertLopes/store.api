@@ -7,7 +7,7 @@ namespace Store.Domain.Interfaces
 {
     public interface IProductRepository : IDisposable
     {
-        IEnumerable<Product> GetAll();
+        IEnumerable<Product> GetProductsFiltered(Product product);
         Product Find(Guid id);
         int Create(Product product);
         int Update(Product product);

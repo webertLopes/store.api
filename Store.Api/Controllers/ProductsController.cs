@@ -36,8 +36,8 @@ namespace Store.Api.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetImageProduct(IFormFile uploadedFile)
         {
-            if (!ModelState.IsValid)            
-                return BadRequest();                     
+            if (!ModelState.IsValid)
+                return BadRequest();
 
             var result = productService.ImageToBase64(uploadedFile);
 
@@ -49,8 +49,8 @@ namespace Store.Api.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult CreateProduct(ProductPost productPost)
         {
             Product product = mapper.Map<ProductPost, Product>(productPost);
@@ -59,38 +59,34 @@ namespace Store.Api.Controllers
 
             if (resultValidate.Errors.Count > 0)
             {
-                return BadRequest(resultValidate.Errors);
+                return BadRequest(resultValidate);
             }
 
             var rows = productService.CreateProduct(product);
 
             if (rows == 0)
             {
-                return NoContent();
+                return NotFound();
             }
 
             return Ok(rows);
         }
 
-
-
-        // GET: api/Products/5
-        [HttpGet("{id}")]
-        public string GetProduct(int id)
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ValidationResult), 400)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult GetProducts([FromQuery] ProductsGet productsGet)
         {
-            return "value";
-        }
+            Product product = mapper.Map<ProductsGet, Product>(productsGet);
 
-        // PUT: api/Products/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+            IEnumerable<Product> products = productService.GetProductsFiltered(product);
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            IEnumerable<ProductGetResult> productGetResult = 
+                         mapper.Map<IEnumerable<ProductGetResult>>(products);
+
+            return Ok(productGetResult);
         }
+        
     }
 }

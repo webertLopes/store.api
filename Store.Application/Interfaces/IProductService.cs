@@ -8,7 +8,7 @@ namespace Store.Application.Interfaces
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetAll();
+        IEnumerable<Product> GetProductsFiltered(Product product);
         string ImageToBase64(IFormFile uploadedFile);
         int CreateProduct(Product product);
     }

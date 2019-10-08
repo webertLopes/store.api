@@ -1,8 +1,5 @@
 ﻿using FluentValidation;
 using Store.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Store.Domain.Exceptions
 {
@@ -11,7 +8,9 @@ namespace Store.Domain.Exceptions
         public ProductCoreException()
         {
             RuleFor(x => x.Description)
-                .NotNull();
+                .NotNull()
+                .Length(3, 5);
+                
 
             RuleFor(x => x.Code).NotNull();
         }

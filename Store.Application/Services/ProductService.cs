@@ -19,9 +19,14 @@ namespace Store.Application.Services
             this.productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
         }
 
-        public IEnumerable<Product> GetAll()
+        public IEnumerable<Product> GetProductsFiltered(Product product)
         {
-            return productRepository.GetAll();
+            if (product == null)
+            {
+                throw new ArgumentNullException(nameof(product));
+            }
+
+            return productRepository.GetProductsFiltered(product);
         }
 
         public string ImageToBase64(IFormFile uploadedFile)
