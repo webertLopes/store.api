@@ -19,6 +19,12 @@ namespace Store.Api
             CreateMap<Product, ProductsGet>();
             CreateMap<Product, ProductGetResult>();
             CreateMap<ProductGetResult, Product>();
+            CreateMap<CustomerGet, Customer>();
+            CreateMap<Customer, CustomerGet>();
+            CreateMap<CustomerPost, Customer>();
+            CreateMap<Customer, CustomerPost>();
+            CreateMap<Customer, CustomerGetResult>();
+            CreateMap<CustomerGetResult, Customer>();            
         }
     }
 }

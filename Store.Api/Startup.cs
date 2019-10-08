@@ -43,6 +43,8 @@ namespace Store.Api
             services.AddSingleton(mapper);
 
             services.AddSingleton<IValidator<Product>, ProductCoreException>();
+            services.AddSingleton<IValidator<Customer>, CustomerCoreException>();
+
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -65,6 +67,8 @@ namespace Store.Api
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<ICustomerService, CustomerService>();
 
             services.AddSwaggerGen(c =>
             {

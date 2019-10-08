@@ -5,7 +5,7 @@ namespace Store.Domain.Entities
 {
     public class Customer
     {
-        public Guid CustomerId { get; set; }
+        public Guid CustomerId { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public string Cpf { get; set; }
         public string Address { get; set; }
