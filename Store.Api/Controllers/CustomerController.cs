@@ -81,6 +81,51 @@ namespace Store.Api.Controllers
             return Ok(customerGetResult);
         }
 
+        /// <summary>
+        /// Update Customer.
+        /// </summary>
+        /// <param name="id">
+        ///     Update Customer.
+        /// </param>
+        /// <param name="customerPost"></param>
+        /// <response code="200">if 1 update if 0 dont update.</response>
+        /// <response code="400">Incorrect parameters or usage limit exceeded.</response>
+        /// <response code="404">
+        ///     Not update Customer
+        /// </response>
+        /// <response code="500">Internal Error</response>
+        [HttpPut("{id}")]
+        public IActionResult UpdateProduct(Guid id, CustomerPost customerPost)
+        {
+            Customer isCustomer = customerService.Find(id);
+
+            if (isCustomer == null)
+            {
+                return BadRequest("customer not exists");
+            }
+
+            Customer customer = mapper.Map<CustomerPost, Customer>(customerPost);
+
+            customer.CustomerId = id;
+
+            var resultValidate = ValidationHelper.Validate(customer);
+
+            if (resultValidate.Errors.Count > 0)
+            {
+                return BadRequest(resultValidate);
+            }
+
+            var rows = customerService.UpdateCustomer(customer);
+
+            if (rows == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(rows);
+        }
+
+
         // POST: api/Customer
         /// <summary>
         /// Create one Customer

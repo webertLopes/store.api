@@ -44,6 +44,20 @@ namespace Store.Application.Services
             }
         }
 
+
+        public int UpdateProduct(Product product)
+        {
+            if (product == null)
+            {
+                throw new ArgumentNullException(nameof(product));
+            }
+
+            var rowsAffected = productRepository.Update(product);
+
+            return rowsAffected;
+        }
+
+
         public int CreateProduct(Product product)
         {
             if (product == null)
@@ -54,6 +68,16 @@ namespace Store.Application.Services
             var rowsAffected = productRepository.Create(product);
 
             return rowsAffected;
+        }
+
+        public Product Find(Guid id)
+        {
+            if (Guid.Empty == id)
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+
+            return productRepository.Find(id);
         }
 
 

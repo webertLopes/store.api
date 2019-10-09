@@ -11,5 +11,7 @@ namespace Store.Application.Interfaces
         IEnumerable<Product> GetProductsFiltered(Product product);
         string ImageToBase64(IFormFile uploadedFile);
         int CreateProduct(Product product);
+        Product Find(Guid id);
+        int UpdateProduct(Product product);
     }
 }

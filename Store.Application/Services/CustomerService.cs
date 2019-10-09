@@ -27,6 +27,18 @@ namespace Store.Application.Services
             return rowsAffected;
         }
 
+        public int UpdateCustomer(Customer customer)
+        {
+            if (customer == null)
+            {
+                throw new ArgumentNullException(nameof(customer));
+            }
+
+            var rowsAffected = customerRepository.Update(customer);
+
+            return rowsAffected;
+        }
+
         public Customer Find(Guid id)
         {
             if (Guid.Empty == id)

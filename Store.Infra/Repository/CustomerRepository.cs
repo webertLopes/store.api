@@ -61,6 +61,28 @@ namespace Store.Infra.Repository
                 }
             }
         }
+
+        public int Update(Customer customer)
+        {
+            using (IDbConnection db = new SqlConnection(ConnectionString))
+            {
+                string sqlQuery = @"UPDATE Customer
+                                    SET Name = @Name
+                                       ,Cpf = @Cpf
+                                       ,[Address] = @Address
+                                   WHERE CustomerId = @CustomerId";
+
+                try
+                {
+                    int rowsAffected = db.Execute(sqlQuery, customer);
+                    return rowsAffected;
+                }
+                catch (SqlException ex)
+                {
+                    throw ex;
+                }
+            }
+        }
         public int Create(Customer customer)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))

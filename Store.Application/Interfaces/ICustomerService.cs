@@ -10,5 +10,6 @@ namespace Store.Application.Interfaces
         IEnumerable<Customer> GetCustomerFiltered(Customer customer);
         Customer Find(Guid id);
         int Create(Customer customer);
+        int UpdateCustomer(Customer customer);
     }
 }

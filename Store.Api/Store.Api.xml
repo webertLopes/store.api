@@ -30,6 +30,21 @@
             </response>
             <response code="500">Internal Error</response>
         </member>
+        <member name="M:Store.Api.Controllers.CustomerController.UpdateProduct(System.Guid,Store.Api.Dtos.CustomerPost)">
+            <summary>
+            Update Customer.
+            </summary>
+            <param name="id">
+                Update Customer.
+            </param>
+            <param name="customerPost"></param>
+            <response code="200">if 1 update if 0 dont update.</response>
+            <response code="400">Incorrect parameters or usage limit exceeded.</response>
+            <response code="404">
+                Not update Customer
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
         <member name="M:Store.Api.Controllers.CustomerController.CreateCustomer(Store.Api.Dtos.CustomerPost)">
             <summary>
             Create one Customer
@@ -38,6 +53,73 @@
                 Create one Customer
             </param>
             <response code="200">Result 1 if create and 0 not create.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductsController.GetImageProduct(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Get image and transform in base64
+            </summary>
+            <param name="uploadedFile">
+                Image transform.
+            </param>
+            <response code="200">Result imageBase64.</response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductsController.UpdateProduct(System.Guid,Store.Api.Dtos.ProductPost)">
+            <summary>
+            Update Product.
+            </summary>
+            <param name="id">
+                Update Product.
+            </param>
+            <param name="productPost"></param>
+            <response code="200">if 1 update if 0 dont update.</response>
+            <response code="404">
+                Not update product
+            </response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductsController.GetProductById(System.Guid)">
+            <summary>
+            Search for Product by ProductId.
+            </summary>
+            <param name="id">
+                Product base search by ProductId.
+            </param>
+            <response code="200">Result one Product.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductsController.CreateProduct(Store.Api.Dtos.ProductPost)">
+            <summary>
+            Create one Product
+            </summary>
+            <param name="productPost">
+                Product base search.
+            </param>
+            <response code="200">Create one Product.</response>
+            <response code="404">if 1 create if 0 no create products.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductsController.GetProducts(Store.Api.Dtos.ProductsGet)">
+            <summary>
+            Search for Product.
+            </summary>
+            <param name="productsGet">
+                Product base search.
+            </param>
+            <response code="200">Result list Products.</response>
             <response code="400">
                 Incorrect parameters or usage limit exceeded.
             </response>
