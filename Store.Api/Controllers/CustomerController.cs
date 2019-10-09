@@ -95,7 +95,7 @@ namespace Store.Api.Controllers
         /// </response>
         /// <response code="500">Internal Error</response>
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(Guid id, CustomerPost customerPost)
+        public IActionResult UpdateCustomer(Guid id, CustomerPost customerPost)
         {
             Customer isCustomer = customerService.Find(id);
 
