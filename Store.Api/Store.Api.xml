@@ -125,5 +125,59 @@
             </response>
             <response code="500">Internal Error</response>
         </member>
+        <member name="M:Store.Api.Controllers.SalesManController.GetSalesMan(Store.Api.Dtos.SalesManGet)">
+            <summary>
+            Search for SalesMan.
+            </summary>
+            <param name="salesManGet">
+                SalesMan base search criteria.
+            </param>
+            <response code="200">Result List.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.SalesManController.GetSalesManById(System.Guid)">
+            <summary>
+            Search for SalesMan by SalesManId.
+            </summary>
+            <param name="id">
+                Customer base search by SalesManId.
+            </param>
+            <response code="200">Result one Customer.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.SalesManController.UpdateSalesMan(System.Guid,Store.Api.Dtos.SalesManPost)">
+            <summary>
+            Update SalesMan.
+            </summary>
+            <param name="id">
+                Update SalesMan.
+            </param>
+            <param name="salesManPost"></param>
+            <response code="200">if 1 update if 0 dont update.</response>
+            <response code="400">Incorrect parameters or usage limit exceeded.</response>
+            <response code="404">
+                Not update SalesMan
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.SalesManController.CreateSalesMan(Store.Api.Dtos.SalesManPost)">
+            <summary>
+            Create one SalesMan
+            </summary>
+            <param name="salesManPost">
+                Create one SalesMan
+            </param>
+            <response code="200">Result 1 if create and 0 not create.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
     </members>
 </doc>

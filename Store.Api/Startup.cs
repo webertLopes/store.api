@@ -44,6 +44,7 @@ namespace Store.Api
 
             services.AddSingleton<IValidator<Product>, ProductCoreException>();
             services.AddSingleton<IValidator<Customer>, CustomerCoreException>();
+            services.AddSingleton<IValidator<SalesMan>, SalesManCoreException>();
 
 
             services.Configure<ApiBehaviorOptions>(options =>
@@ -69,6 +70,8 @@ namespace Store.Api
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ISalesManRepository, SalesManRepository>();
+            services.AddScoped<ISalesManService, SalesManService>();
 
             services.AddSwaggerGen(c =>
             {
