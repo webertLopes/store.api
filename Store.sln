@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Domain", "Store.Domain\Store.Domain.csproj", "{E441CA1A-ACFD-4397-8DFE-1080C0B0D1F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Domain", "Store.Domain\Store.Domain.csproj", "{E441CA1A-ACFD-4397-8DFE-1080C0B0D1F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Application", "Store.Application\Store.Application.csproj", "{002CC996-0C7B-4EF1-8CF0-7B7460D97F27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Application", "Store.Application\Store.Application.csproj", "{002CC996-0C7B-4EF1-8CF0-7B7460D97F27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Infra", "Store.Infra\Store.Infra.csproj", "{145487FC-EA69-4CB3-BFB8-5F0308305A92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Infra", "Store.Infra\Store.Infra.csproj", "{145487FC-EA69-4CB3-BFB8-5F0308305A92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Test", "Store.Test\Store.Test.csproj", "{C1AA1700-97D7-41B5-BDBA-D60B2B6C4FF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Test", "Store.Test\Store.Test.csproj", "{C1AA1700-97D7-41B5-BDBA-D60B2B6C4FF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Api", "Store.Api\Store.Api.csproj", "{B1032344-D01D-4B09-9AF3-10075CEE2E68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Api", "Store.Api\Store.Api.csproj", "{B1032344-D01D-4B09-9AF3-10075CEE2E68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{C52C5664-3E04-41D7-AFA3-262769BCA631}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\w.lopes\Desktop\store.sql = C:\Users\w.lopes\Desktop\store.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
