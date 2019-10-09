@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Store.Application.Interfaces
 {
     public interface ICustomerService
     {
-        IEnumerable<Customer> GetCustomerFiltered(Customer customer);
-        Customer Find(Guid id);
-        int Create(Customer customer);
-        int UpdateCustomer(Customer customer);
+        Task<IEnumerable<Customer>> GetCustomerFiltered(Customer customer);
+        Task<Customer> Find(Guid id);
+        Task<int> Create(Customer customer);
+        Task<int> UpdateCustomer(Customer customer);
     }
 }

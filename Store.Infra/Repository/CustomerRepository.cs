@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Store.Infra.Repository
 {
@@ -20,13 +21,13 @@ namespace Store.Infra.Repository
             ConnectionString = configuration.GetValue<string>("ConnectionString");
         }
 
-        public IEnumerable<Customer> GetCustomerFiltered(Customer customer)
+        public async Task<IEnumerable<Customer>> GetCustomerFiltered(Customer customer)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 string sqlQuery = @"SELECT * FROM dbo.Customer";
 
-                var result = db.Query<Customer>(sqlQuery, customer).ToList();
+                var result = await db.QueryAsync<Customer>(sqlQuery, customer);
 
                 if (Guid.Empty != customer.CustomerId)
                 {
@@ -47,13 +48,13 @@ namespace Store.Infra.Repository
             }
         }
 
-        public Customer Find(Guid id)
+        public async Task<Customer> Find(Guid id)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 try
                 {
-                    return db.Query<Customer>("SELECT * FROM dbo.Customer where CustomerId = @id", new { id }).SingleOrDefault();
+                    return await db.QuerySingleAsync<Customer>("SELECT * FROM dbo.Customer where CustomerId = @id", new { id });
                 }
                 catch (SqlException ex)
                 {
@@ -62,7 +63,7 @@ namespace Store.Infra.Repository
             }
         }
 
-        public int Update(Customer customer)
+        public async Task<int> Update(Customer customer)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
@@ -74,7 +75,7 @@ namespace Store.Infra.Repository
 
                 try
                 {
-                    int rowsAffected = db.Execute(sqlQuery, customer);
+                    int rowsAffected = await db.ExecuteAsync(sqlQuery, customer);
                     return rowsAffected;
                 }
                 catch (SqlException ex)
@@ -83,7 +84,7 @@ namespace Store.Infra.Repository
                 }
             }
         }
-        public int Create(Customer customer)
+        public async Task<int> Create(Customer customer)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
@@ -99,7 +100,7 @@ namespace Store.Infra.Repository
                                                 ,@Address)";
                 try
                 {
-                    int rowsAffected = db.Execute(sqlQuery, customer);
+                    int rowsAffected = await db.ExecuteAsync(sqlQuery, customer);
                     return rowsAffected;
                 }
                 catch (SqlException ex)

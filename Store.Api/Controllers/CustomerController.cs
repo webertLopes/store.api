@@ -45,11 +45,11 @@ namespace Store.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetCustomer([FromQuery] CustomerGet customerGet)
+        public async Task<IActionResult> GetCustomer([FromQuery] CustomerGet customerGet)
         {
             Customer customer = mapper.Map<CustomerGet, Customer>(customerGet);
 
-            IEnumerable<Customer> customers = customerService.GetCustomerFiltered(customer);
+            IEnumerable<Customer> customers = await customerService.GetCustomerFiltered(customer);
 
             IEnumerable<CustomerGetResult> customerGetResult =
                          mapper.Map<IEnumerable<CustomerGetResult>>(customers);
@@ -72,9 +72,9 @@ namespace Store.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetCustomerById(Guid id)
+        public async Task<IActionResult> GetCustomerById(Guid id)
         {
-            Customer customers = customerService.Find(id);
+            Customer customers = await customerService.Find(id);
 
             CustomerGetResult customerGetResult = mapper.Map<CustomerGetResult>(customers);
 
@@ -95,9 +95,9 @@ namespace Store.Api.Controllers
         /// </response>
         /// <response code="500">Internal Error</response>
         [HttpPut("{id}")]
-        public IActionResult UpdateCustomer(Guid id, CustomerPost customerPost)
+        public async Task<IActionResult> UpdateCustomer(Guid id, CustomerPost customerPost)
         {
-            Customer isCustomer = customerService.Find(id);
+            Customer isCustomer = await customerService.Find(id);
 
             if (isCustomer == null)
             {
@@ -115,7 +115,7 @@ namespace Store.Api.Controllers
                 return BadRequest(resultValidate);
             }
 
-            var rows = customerService.UpdateCustomer(customer);
+            var rows = await customerService.UpdateCustomer(customer);
 
             if (rows == 0)
             {
@@ -143,7 +143,7 @@ namespace Store.Api.Controllers
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult CreateCustomer(CustomerPost customerPost)
+        public async Task<IActionResult> CreateCustomer(CustomerPost customerPost)
         {
             Customer customer = mapper.Map<CustomerPost, Customer>(customerPost);
 
@@ -154,7 +154,7 @@ namespace Store.Api.Controllers
                 return BadRequest(resultValidate);
             }
 
-            var rows = customerService.Create(customer);
+            var rows = await customerService.Create(customer);
 
             if (rows == 0)
             {
