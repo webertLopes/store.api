@@ -30,7 +30,7 @@
             </response>
             <response code="500">Internal Error</response>
         </member>
-        <member name="M:Store.Api.Controllers.CustomerController.UpdateProduct(System.Guid,Store.Api.Dtos.CustomerPost)">
+        <member name="M:Store.Api.Controllers.CustomerController.UpdateCustomer(System.Guid,Store.Api.Dtos.CustomerPost)">
             <summary>
             Update Customer.
             </summary>

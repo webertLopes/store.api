@@ -8,4 +8,3 @@ D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.AssemblyInfoInp
 D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.AssemblyInfo.cs
 D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.dll
 D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.pdb
-D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.csprojAssemblyReference.cache

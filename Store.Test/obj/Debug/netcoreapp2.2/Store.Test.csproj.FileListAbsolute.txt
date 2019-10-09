@@ -6,9 +6,14 @@ D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.runtimeconfig.json
 D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.runtimeconfig.dev.json
 D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.dll
 D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Test.pdb
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Application.dll
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Domain.dll
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Application.pdb
+D:\Store\Store\Store.Test\bin\Debug\netcoreapp2.2\Store.Domain.pdb
 D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.csprojAssemblyReference.cache
 D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.csproj.CoreCompileInputs.cache
 D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.AssemblyInfoInputs.cache
 D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.AssemblyInfo.cs
+D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.csproj.CopyComplete
 D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.dll
 D:\Store\Store\Store.Test\obj\Debug\netcoreapp2.2\Store.Test.pdb
