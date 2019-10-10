@@ -3,7 +3,6 @@ D:\Store\Store\Store.Domain\bin\Debug\netcoreapp2.2\Store.Domain.runtimeconfig.j
 D:\Store\Store\Store.Domain\bin\Debug\netcoreapp2.2\Store.Domain.runtimeconfig.dev.json
 D:\Store\Store\Store.Domain\bin\Debug\netcoreapp2.2\Store.Domain.dll
 D:\Store\Store\Store.Domain\bin\Debug\netcoreapp2.2\Store.Domain.pdb
-D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.csprojAssemblyReference.cache
 D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.csproj.CoreCompileInputs.cache
 D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.AssemblyInfoInputs.cache
 D:\Store\Store\Store.Domain\obj\Debug\netcoreapp2.2\Store.Domain.AssemblyInfo.cs

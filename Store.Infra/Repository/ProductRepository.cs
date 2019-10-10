@@ -46,12 +46,7 @@ namespace Store.Infra.Repository
                 if (!string.IsNullOrEmpty(product.PriceBase.ToString()))
                 {
                     result = result.Where(x => x.PriceBase.ToString().Contains(product.PriceBase.ToString())).ToList();
-                }
-
-                if (!string.IsNullOrEmpty(product.Discount.ToString()))
-                {
-                    result = result.Where(x => x.Discount.ToString().Contains(product.Discount.ToString())).ToList();
-                }
+                }               
 
                 return result;
             }
@@ -75,8 +70,30 @@ namespace Store.Infra.Repository
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                string sqlQuery = @"INSERT INTO Product(ProductId,[Description],Code,PriceBase, ProductDate,Discount,Image) 
-                                            VALUES (@ProductId, @Description, @Code, @PriceBase, @ProductDate, @Discount, @Image)";
+                string sqlQuery = @"INSERT INTO [Loja].[dbo].[Product]
+                                           ([ProductId]
+                                           ,[Brand]
+                                           ,[Description]
+                                           ,[Code]
+                                           ,[PriceBase]
+                                           ,[ProductDate]
+                                           ,[ImageOne]
+                                           ,[ImageTwo]
+                                           ,[Size]
+                                           ,[Collor]
+                                           ,[QtyStock])
+                                     VALUES
+                                           (@ProductId
+                                           ,@Brand
+                                           ,@Description
+                                           ,@Code
+                                           ,@PriceBase
+                                           ,@ProductDate
+                                           ,@ImageOne
+                                           ,@ImageTwo
+                                           ,@Size
+                                           ,@Collor
+                                           ,@QtyStock)";
                 try
                 {
                     int rowsAffected = await db.ExecuteAsync(sqlQuery, product);
@@ -93,13 +110,18 @@ namespace Store.Infra.Repository
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                string sqlQuery = @"UPDATE dbo.Product 
-                                    SET [Description] = @Description, 
-                                        Code = @Code, 
-                                        PriceBase = @PriceBase, 
-                                        ProductDate = @ProductDate,
-                                        Discount = @Discount
-                                    WHERE ProductId = @ProductId";
+                string sqlQuery = @"UPDATE Product
+                                     SET [Brand] = @Brand
+                                        ,[Description] = @Description
+                                        ,[Code] = @Code
+                                        ,[PriceBase] = @PriceBase
+                                        ,[ProductDate] = @ProductDate
+                                        ,[ImageOne] = @ImageOne
+                                        ,[ImageTwo] = @ImageTwo
+                                        ,[Size] = @Size
+                                        ,[Collor] = @Collor
+                                        ,[QtyStock] = @QtyStock
+                                   WHERE [ProductId] = @ProductId";
 
                 try
                 {

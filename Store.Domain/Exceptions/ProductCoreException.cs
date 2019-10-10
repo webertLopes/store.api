@@ -8,8 +8,7 @@ namespace Store.Domain.Exceptions
         public ProductCoreException()
         {
             RuleFor(x => x.Description)
-                .NotNull()
-                .Length(3, 5);
+                .NotNull();
                 
 
             RuleFor(x => x.Code).NotNull();

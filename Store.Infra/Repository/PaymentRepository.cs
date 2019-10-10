@@ -65,14 +65,12 @@ namespace Store.Infra.Repository
                                           (PaymentId
                                           ,[Description]
                                           ,FormPayment
-                                          ,PaymentDate
-                                          ,SaleId)
+                                          ,PaymentDate)
                                     VALUES
                                           (@PaymentId
                                           ,@Description
                                           ,@FormPayment
-                                          ,@PaymentDate
-                                          ,@SaleId)";
+                                          ,@PaymentDate)";
                 try
                 {
                     int rowsAffected = await db.ExecuteAsync(sqlQuery, payment);
@@ -93,7 +91,6 @@ namespace Store.Infra.Repository
                                       SET [Description] = @Description
                                          ,FormPayment = @FormPayment
                                          ,PaymentDate = @PaymentDate
-                                         ,SaleId = @SaleId
                                     WHERE PaymentId = @PaymentId";
                 try
                 {

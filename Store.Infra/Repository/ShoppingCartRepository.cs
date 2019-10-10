@@ -27,11 +27,6 @@ namespace Store.Infra.Repository
 
                 var result = await db.QueryAsync<ShoppingCart>(sqlQuery, shoppingCart);
 
-                if (Guid.Empty != shoppingCart.ShoppingCartId)
-                {
-                    result = result.Where(x => x.SalesManId == shoppingCart.ShoppingCartId).ToList();
-                }
-
                 if (!string.IsNullOrEmpty(shoppingCart.Description))
                 {
                     result = result.Where(x => x.Description.Contains(shoppingCart.Description)).ToList();
@@ -60,21 +55,23 @@ namespace Store.Infra.Repository
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 string sqlQuery = @"INSERT INTO ShoppingCart
-                                           ( ShoppingCartId
-                                           , [Description]
-                                           , CustomerId
-                                           , ProductId
-                                           , SalesManId
-                                           , ShoppingCartDate
-                                           , Price)
+                                           ([ShoppingCartId]
+                                           ,[PaymentId]
+                                           ,[Description]
+                                           ,[CustomerId]
+                                           ,[ProductId]
+                                           ,[ShoppingCartDate]
+                                           ,[Price]
+                                           ,[Qtd])
                                      VALUES
                                            (@ShoppingCartId
+                                           ,@PaymentId
                                            ,@Description
                                            ,@CustomerId
                                            ,@ProductId
-                                           ,@SalesManId
                                            ,@ShoppingCartDate
-                                           ,@Price)";
+                                           ,@Price
+                                           ,@Qtd)";
                 try
                 {
                     int rowsAffected = await db.ExecuteAsync(sqlQuery, shoppingCart);
@@ -92,13 +89,14 @@ namespace Store.Infra.Repository
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 string sqlQuery = @"UPDATE ShoppingCart
-                                    SET [Description] = @Description
-                                       ,CustomerId = @CustomerId
-                                       ,ProductId = @ProductId
-                                       ,SalesManId = @SalesManId
-                                       ,ShoppingCartDate = @ShoppingCartDate
-                                       ,Price = @Price
-                                  WHERE ShoppingCartId = @ShoppingCartId";
+                                     SET [PaymentId] = @PaymentId
+                                        ,[Description] = @Description
+                                        ,[CustomerId] = @CustomerId
+                                        ,[ProductId] = @ProductId
+                                        ,[ShoppingCartDate] = @ShoppingCartDate
+                                        ,[Price] = @Price
+                                        ,[Qtd] = @Qtd
+                                   WHERE [ShoppingCartId] = @ShoppingCartId";
 
                 try
                 {

@@ -31,8 +31,6 @@ namespace Store.Test
                 ProductId = Guid.NewGuid(),
                 Code = 10,
                 Description = "T-Shirt",
-                Discount = 10,
-                Image = ".jpg",
                 PriceBase = 190,
                 ProductDate = DateTime.Now
             };
@@ -59,8 +57,6 @@ namespace Store.Test
                     ProductId = Guid.NewGuid(),
                     Code = 10,
                     Description = "T-Shirt",
-                    Discount = 10,
-                    Image = ".jpg",
                     PriceBase = 190,
                     ProductDate = DateTime.Now                  
                 }
@@ -75,8 +71,6 @@ namespace Store.Test
                 ProductId = Guid.NewGuid(),
                 Code = 10,
                 Description = "T-Shirt",
-                Discount = 10,
-                Image = ".jpg",
                 PriceBase = 190,
                 ProductDate = DateTime.Now
             });
@@ -87,8 +81,6 @@ namespace Store.Test
                             f.ProductId == expectedSingle.ProductId &&
                             f.Code == expectedSingle.Code &&
                             f.Description == expectedSingle.Description &&
-                            f.Discount == expectedSingle.Discount &&
-                            f.Image == expectedSingle.Image &&
                             f.PriceBase == expectedSingle.PriceBase);
         }
 
