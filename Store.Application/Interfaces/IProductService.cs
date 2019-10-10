@@ -3,15 +3,16 @@ using Store.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Store.Application.Interfaces
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetProductsFiltered(Product product);
-        string ImageToBase64(IFormFile uploadedFile);
-        int CreateProduct(Product product);
-        Product Find(Guid id);
-        int UpdateProduct(Product product);
+        Task<IEnumerable<Product>> GetProductsFiltered(Product product);
+        Task<string> ImageToBase64(IFormFile uploadedFile);
+        Task<int> CreateProduct(Product product);
+        Task<Product> Find(Guid id);
+        Task<int> UpdateProduct(Product product);
     }
 }

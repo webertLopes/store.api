@@ -42,12 +42,12 @@ namespace Store.Api.Controllers
         [HttpPost("upload")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetImageProduct(IFormFile uploadedFile)
+        public async Task<IActionResult> GetImageProduct(IFormFile uploadedFile)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var result = productService.ImageToBase64(uploadedFile);
+            var result = await productService.ImageToBase64(uploadedFile);
 
             return Ok(result);
         }
@@ -70,9 +70,9 @@ namespace Store.Api.Controllers
         /// </response>
         /// <response code="500">Internal Error</response>
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(Guid id, ProductPost productPost)
+        public async Task<IActionResult> UpdateProduct(Guid id, ProductPost productPost)
         {
-            Product isProduct = productService.Find(id);
+            Product isProduct = await productService.Find(id);
 
             if (isProduct == null)
             {
@@ -90,7 +90,7 @@ namespace Store.Api.Controllers
                 return BadRequest(resultValidate);
             }
 
-            var rows = productService.UpdateProduct(product);
+            var rows = await productService.UpdateProduct(product);
 
             if (rows == 0)
             {
@@ -115,9 +115,9 @@ namespace Store.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetProductById(Guid id)
+        public async Task<IActionResult> GetProductById(Guid id)
         {
-            Product product = productService.Find(id);
+            Product product = await productService.Find(id);
 
             ProductGetResult productGetResult = mapper.Map<ProductGetResult>(product);            
 
@@ -143,7 +143,7 @@ namespace Store.Api.Controllers
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult CreateProduct(ProductPost productPost)
+        public async Task<IActionResult> CreateProduct(ProductPost productPost)
         {
             Product product = mapper.Map<ProductPost, Product>(productPost);
 
@@ -154,7 +154,7 @@ namespace Store.Api.Controllers
                 return BadRequest(resultValidate);
             }
 
-            var rows = productService.CreateProduct(product);
+            var rows = await productService.CreateProduct(product);
 
             if (rows == 0)
             {
@@ -181,11 +181,11 @@ namespace Store.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetProducts([FromQuery] ProductsGet productsGet)
+        public async Task<IActionResult> GetProducts([FromQuery] ProductsGet productsGet)
         {
             Product product = mapper.Map<ProductsGet, Product>(productsGet);
 
-            IEnumerable<Product> products = productService.GetProductsFiltered(product);
+            IEnumerable<Product> products = await productService.GetProductsFiltered(product);
 
             IEnumerable<ProductGetResult> productGetResult = 
                          mapper.Map<IEnumerable<ProductGetResult>>(products);

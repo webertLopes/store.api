@@ -7,6 +7,7 @@ using Store.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace Store.Application.Services
 {
@@ -19,17 +20,17 @@ namespace Store.Application.Services
             this.productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
         }
 
-        public IEnumerable<Product> GetProductsFiltered(Product product)
+        public async Task<IEnumerable<Product>> GetProductsFiltered(Product product)
         {
             if (product == null)
             {
                 throw new ArgumentNullException(nameof(product));
             }
 
-            return productRepository.GetProductsFiltered(product);
+            return await productRepository.GetProductsFiltered(product);
         }
 
-        public string ImageToBase64(IFormFile uploadedFile)
+        public async Task<string> ImageToBase64(IFormFile uploadedFile)
         {
             if (uploadedFile == null)
             {
@@ -40,44 +41,44 @@ namespace Store.Application.Services
             {
                 uploadedFile.CopyTo(ms);
                 var fileBytes = ms.ToArray();
-                return Convert.ToBase64String(fileBytes);
+                return await Task.Run(() => Convert.ToBase64String(fileBytes));
             }
         }
 
 
-        public int UpdateProduct(Product product)
+        public async Task<int> UpdateProduct(Product product)
         {
             if (product == null)
             {
                 throw new ArgumentNullException(nameof(product));
             }
 
-            var rowsAffected = productRepository.Update(product);
+            var rowsAffected = await productRepository.Update(product);
 
             return rowsAffected;
         }
 
 
-        public int CreateProduct(Product product)
+        public async Task<int> CreateProduct(Product product)
         {
             if (product == null)
             {
                 throw new ArgumentNullException(nameof(product));
             }
 
-            var rowsAffected = productRepository.Create(product);
+            var rowsAffected = await productRepository.Create(product);
 
             return rowsAffected;
         }
 
-        public Product Find(Guid id)
+        public async Task<Product> Find(Guid id)
         {
             if (Guid.Empty == id)
             {
                 throw new ArgumentNullException(nameof(id));
             }
 
-            return productRepository.Find(id);
+            return await productRepository.Find(id);
         }
 
 

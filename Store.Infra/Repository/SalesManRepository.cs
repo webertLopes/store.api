@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Store.Infra.Repository
 {
@@ -19,13 +20,13 @@ namespace Store.Infra.Repository
             ConnectionString = configuration.GetValue<string>("ConnectionString");
         }
 
-        public IEnumerable<SalesMan> GetSalesManFiltered(SalesMan salesMan)
+        public async Task<IEnumerable<SalesMan>> GetSalesManFiltered(SalesMan salesMan)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 string sqlQuery = @"SELECT * FROM dbo.SalesMan";
 
-                var result = db.Query<SalesMan>(sqlQuery, salesMan).ToList();
+                var result = await db.QueryAsync<SalesMan>(sqlQuery, salesMan);
 
                 if (Guid.Empty != salesMan.SalesManId)
                 {
@@ -41,13 +42,13 @@ namespace Store.Infra.Repository
             }
         }
 
-        public SalesMan Find(Guid id)
+        public async Task<SalesMan> Find(Guid id)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 try
                 {
-                    return db.Query<SalesMan>("SELECT * FROM dbo.SalesMan where SalesManId = @id", new { id }).SingleOrDefault();
+                    return await db.QuerySingleAsync<SalesMan>("SELECT * FROM dbo.SalesMan where SalesManId = @id", new { id });
                 }
                 catch (SqlException ex)
                 {
@@ -55,7 +56,7 @@ namespace Store.Infra.Repository
                 }
             }
         }
-        public int Create(SalesMan salesMan)
+        public async Task<int> Create(SalesMan salesMan)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
@@ -65,7 +66,7 @@ namespace Store.Infra.Repository
                                     (@SalesManId ,@Name)";
                 try
                 {
-                    int rowsAffected = db.Execute(sqlQuery, salesMan);
+                    int rowsAffected = await db.ExecuteAsync(sqlQuery, salesMan);
                     return rowsAffected;
                 }
                 catch (SqlException ex)
@@ -75,7 +76,7 @@ namespace Store.Infra.Repository
 
             }
         }
-        public int Update(SalesMan salesMan)
+        public async Task<int> Update(SalesMan salesMan)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
@@ -85,7 +86,7 @@ namespace Store.Infra.Repository
 
                 try
                 {
-                    int rowsAffected = db.Execute(sqlQuery, salesMan);
+                    int rowsAffected = await db.ExecuteAsync(sqlQuery, salesMan);
                     return rowsAffected;
                 }
                 catch (SqlException ex)

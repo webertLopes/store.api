@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Store.Infra.Repository
 {
@@ -19,13 +20,13 @@ namespace Store.Infra.Repository
             ConnectionString = configuration.GetValue<string>("ConnectionString");
         }
 
-        public IEnumerable<Product> GetProductsFiltered(Product product)
+        public async Task<IEnumerable<Product>> GetProductsFiltered(Product product)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 string sqlQuery = @"SELECT * FROM dbo.Product";
 
-                var result = db.Query<Product>(sqlQuery, product).ToList();
+                var result = await db.QueryAsync<Product>(sqlQuery, product);
 
                 if (Guid.Empty != product.ProductId)
                 {
@@ -56,13 +57,13 @@ namespace Store.Infra.Repository
             }
         }
 
-        public Product Find(Guid id)
+        public async Task<Product> Find(Guid id)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
                 try
                 {
-                    return db.Query<Product>("SELECT * FROM dbo.Product where ProductId = @id", new { id }).SingleOrDefault();
+                    return await db.QuerySingleAsync<Product>("SELECT * FROM dbo.Product where ProductId = @id", new { id });
                 }
                 catch (SqlException ex)
                 {
@@ -70,7 +71,7 @@ namespace Store.Infra.Repository
                 }                
             }
         }
-        public int Create(Product product)
+        public async Task<int> Create(Product product)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
@@ -78,7 +79,7 @@ namespace Store.Infra.Repository
                                             VALUES (@ProductId, @Description, @Code, @PriceBase, @ProductDate, @Discount, @Image)";
                 try
                 {
-                    int rowsAffected = db.Execute(sqlQuery, product);
+                    int rowsAffected = await db.ExecuteAsync(sqlQuery, product);
                     return rowsAffected;
                 }
                 catch (SqlException ex)
@@ -88,7 +89,7 @@ namespace Store.Infra.Repository
                
             }
         }
-        public int Update(Product product)
+        public async Task<int> Update(Product product)
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
@@ -102,7 +103,7 @@ namespace Store.Infra.Repository
 
                 try
                 {
-                    int rowsAffected = db.Execute(sqlQuery, product);
+                    int rowsAffected = await db.ExecuteAsync(sqlQuery, product);
                     return rowsAffected;
                 }
                 catch (SqlException ex)

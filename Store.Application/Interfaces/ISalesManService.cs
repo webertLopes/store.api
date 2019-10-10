@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Store.Application.Interfaces
 {
     public interface ISalesManService
     {
-        IEnumerable<SalesMan> GetSalesManFiltered(SalesMan salesMan);
-        int UpdateSalesMan(SalesMan salesMan);
-        int CreateSalesMan(SalesMan salesMan);
-        SalesMan Find(Guid id);
+        Task<IEnumerable<SalesMan>> GetSalesManFiltered(SalesMan salesMan);
+        Task<int> UpdateSalesMan(SalesMan salesMan);
+        Task<int> CreateSalesMan(SalesMan salesMan);
+        Task<SalesMan> Find(Guid id);
     }
 }

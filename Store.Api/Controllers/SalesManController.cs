@@ -8,6 +8,7 @@ using Store.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace Store.Api.Controllers
 {
@@ -43,11 +44,11 @@ namespace Store.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetSalesMan([FromQuery] SalesManGet salesManGet)
+        public async Task<IActionResult> GetSalesMan([FromQuery] SalesManGet salesManGet)
         {
             SalesMan salesMan = mapper.Map<SalesManGet, SalesMan>(salesManGet);
 
-            IEnumerable<SalesMan> saleMans = salesManService.GetSalesManFiltered(salesMan);
+            IEnumerable<SalesMan> saleMans = await salesManService.GetSalesManFiltered(salesMan);
 
             IEnumerable<SalesManGetResult> salesManGetResult =
                          mapper.Map<IEnumerable<SalesManGetResult>>(saleMans);
@@ -70,9 +71,9 @@ namespace Store.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult GetSalesManById(Guid id)
+        public async Task<IActionResult> GetSalesManById(Guid id)
         {
-            SalesMan salesMan = salesManService.Find(id);
+            SalesMan salesMan = await salesManService.Find(id);
 
             SalesManGetResult customerGetResult = mapper.Map<SalesManGetResult>(salesMan);
 
@@ -93,9 +94,9 @@ namespace Store.Api.Controllers
         /// </response>
         /// <response code="500">Internal Error</response>
         [HttpPut("{id}")]
-        public IActionResult UpdateSalesMan(Guid id, SalesManPost salesManPost)
+        public async Task<IActionResult> UpdateSalesMan(Guid id, SalesManPost salesManPost)
         {
-            SalesMan isSalesMan = salesManService.Find(id);
+            SalesMan isSalesMan = await salesManService.Find(id);
 
             if (isSalesMan == null)
             {
@@ -113,7 +114,7 @@ namespace Store.Api.Controllers
                 return BadRequest(resultValidate);
             }
 
-            var rows = salesManService.UpdateSalesMan(salesman);
+            var rows = await salesManService.UpdateSalesMan(salesman);
 
             if (rows == 0)
             {
@@ -141,7 +142,7 @@ namespace Store.Api.Controllers
         [ProducesResponseType(typeof(ValidationResult), 400)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult CreateSalesMan(SalesManPost salesManPost)
+        public async Task<IActionResult> CreateSalesMan(SalesManPost salesManPost)
         {
             SalesMan salesMan = mapper.Map<SalesManPost, SalesMan>(salesManPost);
 
@@ -152,7 +153,7 @@ namespace Store.Api.Controllers
                 return BadRequest(resultValidate);
             }
 
-            var rows = salesManService.CreateSalesMan(salesMan);
+            var rows = await salesManService.CreateSalesMan(salesMan);
 
             if (rows == 0)
             {
