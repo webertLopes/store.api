@@ -58,6 +58,60 @@
             </response>
             <response code="500">Internal Error</response>
         </member>
+        <member name="M:Store.Api.Controllers.PaymentController.GetPayment(Store.Api.Dtos.PaymentGet)">
+            <summary>
+            Search for customers.
+            </summary>
+            <param name="paymentGet">
+                Customer base search criteria.
+            </param>
+            <response code="200">Result List.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.PaymentController.GetPaymentById(System.Guid)">
+            <summary>
+            Search for customers by CustomerId.
+            </summary>
+            <param name="id">
+                Customer base search by CustomerId.
+            </param>
+            <response code="200">Result one Customer.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.PaymentController.UpdatePayment(System.Guid,Store.Api.Dtos.PaymentPost)">
+            <summary>
+            Update Customer.
+            </summary>
+            <param name="id">
+                Update Customer.
+            </param>
+            <param name="paymentPost"></param>
+            <response code="200">if 1 update if 0 dont update.</response>
+            <response code="400">Incorrect parameters or usage limit exceeded.</response>
+            <response code="404">
+                Not update Customer
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.PaymentController.CreatePayment(Store.Api.Dtos.PaymentPost)">
+            <summary>
+            Create one Customer
+            </summary>
+            <param name="paymentPost">
+                Create one Customer
+            </param>
+            <response code="200">Result 1 if create and 0 not create.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
         <member name="M:Store.Api.Controllers.ProductsController.GetImageProduct(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             Get image and transform in base64
@@ -125,6 +179,60 @@
             </response>
             <response code="500">Internal Error</response>
         </member>
+        <member name="M:Store.Api.Controllers.SaleController.GetSale(Store.Api.Dtos.SaleGet)">
+            <summary>
+            Search for customers.
+            </summary>
+            <param name="saleGet">
+                Customer base search criteria.
+            </param>
+            <response code="200">Result List.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.SaleController.GetSaleById(System.Guid)">
+            <summary>
+            Search for customers by CustomerId.
+            </summary>
+            <param name="id">
+                Customer base search by CustomerId.
+            </param>
+            <response code="200">Result one Customer.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.SaleController.UpdatePayment(System.Guid,Store.Api.Dtos.SalePost)">
+            <summary>
+            Update Customer.
+            </summary>
+            <param name="id">
+                Update Customer.
+            </param>
+            <param name="salePost"></param>
+            <response code="200">if 1 update if 0 dont update.</response>
+            <response code="400">Incorrect parameters or usage limit exceeded.</response>
+            <response code="404">
+                Not update Customer
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.SaleController.CreatePayment(Store.Api.Dtos.SalePost)">
+            <summary>
+            Create one Customer
+            </summary>
+            <param name="salePost">
+                Create one Customer
+            </param>
+            <response code="200">Result 1 if create and 0 not create.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
         <member name="M:Store.Api.Controllers.SalesManController.GetSalesMan(Store.Api.Dtos.SalesManGet)">
             <summary>
             Search for SalesMan.
@@ -172,6 +280,60 @@
             </summary>
             <param name="salesManPost">
                 Create one SalesMan
+            </param>
+            <response code="200">Result 1 if create and 0 not create.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ShoppingCartController.GetShoppingCart(Store.Api.Dtos.ShoppingCartGet)">
+            <summary>
+            Search for customers.
+            </summary>
+            <param name="shoppingCartGet">
+                Customer base search criteria.
+            </param>
+            <response code="200">Result List.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ShoppingCartController.GetShoppingCartById(System.Guid)">
+            <summary>
+            Search for customers by CustomerId.
+            </summary>
+            <param name="id">
+                Customer base search by CustomerId.
+            </param>
+            <response code="200">Result one Customer.</response>
+            <response code="400">
+                Incorrect parameters or usage limit exceeded.
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ShoppingCartController.UpdateShoppingCart(System.Guid,Store.Api.Dtos.ShoppingCartPost)">
+            <summary>
+            Update Customer.
+            </summary>
+            <param name="id">
+                Update Customer.
+            </param>
+            <param name="shoppingCartPost"></param>
+            <response code="200">if 1 update if 0 dont update.</response>
+            <response code="400">Incorrect parameters or usage limit exceeded.</response>
+            <response code="404">
+                Not update Customer
+            </response>
+            <response code="500">Internal Error</response>
+        </member>
+        <member name="M:Store.Api.Controllers.ShoppingCartController.CreateShoppingCart(Store.Api.Dtos.ShoppingCartPost)">
+            <summary>
+            Create one Customer
+            </summary>
+            <param name="shoppingCartPost">
+                Create one Customer
             </param>
             <response code="200">Result 1 if create and 0 not create.</response>
             <response code="400">

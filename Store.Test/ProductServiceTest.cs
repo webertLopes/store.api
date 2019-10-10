@@ -6,6 +6,7 @@ using Store.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Store.Test
@@ -23,7 +24,7 @@ namespace Store.Test
 
         [Fact]
         [Trait(nameof(IProductService.Find), "Success")]
-        public void GetProductById_Success()
+        public async Task GetProductById_Success()
         {
             var expected = new Product
             {
@@ -38,9 +39,9 @@ namespace Store.Test
 
             productRepositoryMock
                 .Setup(m => m.Find(expected.ProductId))
-                .Returns(expected);
+                .ReturnsAsync(expected);
 
-            var product = productService.Find(expected.ProductId);
+            var product = await productService.Find(expected.ProductId);
 
             var actual = product;
 
@@ -49,7 +50,7 @@ namespace Store.Test
 
         [Fact]
         [Trait(nameof(ICustomerService.GetCustomerFiltered), "Success")]
-        public void GetProducts_Success()
+        public async Task GetProducts_Success()
         {
             var expected = new List<Product>()
             {
@@ -67,9 +68,9 @@ namespace Store.Test
 
             productRepositoryMock
                .Setup(m => m.GetProductsFiltered(It.IsAny<Product>()))
-               .Returns(expected);
+               .ReturnsAsync(expected);
 
-            var products = productService.GetProductsFiltered(new Product()
+            var products = await productService.GetProductsFiltered(new Product()
             {
                 ProductId = Guid.NewGuid(),
                 Code = 10,

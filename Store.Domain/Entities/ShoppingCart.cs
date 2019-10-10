@@ -5,7 +5,7 @@ namespace Store.Domain.Entities
 {
     public class ShoppingCart
     {
-        public Guid ShoppingCartId { get; set; }
+        public Guid ShoppingCartId { get; set; } = Guid.NewGuid();
         public string Description { get; set; }
         public Guid CustomerId { get; set; }
         public Guid ProductId { get; set; }

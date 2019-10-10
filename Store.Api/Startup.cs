@@ -45,6 +45,9 @@ namespace Store.Api
             services.AddSingleton<IValidator<Product>, ProductCoreException>();
             services.AddSingleton<IValidator<Customer>, CustomerCoreException>();
             services.AddSingleton<IValidator<SalesMan>, SalesManCoreException>();
+            services.AddSingleton<IValidator<Payment>, PaymentCoreException>();
+            services.AddSingleton<IValidator<Sale>, SaleCoreException>();
+            services.AddSingleton<IValidator<ShoppingCart>, ShoppingCartCoreException>();
 
 
             services.Configure<ApiBehaviorOptions>(options =>
@@ -66,12 +69,22 @@ namespace Store.Api
 
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
+
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
+
             services.AddScoped<ISalesManRepository, SalesManRepository>();
             services.AddScoped<ISalesManService, SalesManService>();
+
+            services.AddScoped<ISaleService, SaleService>();
+            services.AddScoped<ISaleRepository, SaleRepository>();
+
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IPaymentService, PaymentService>();
+
 
             services.AddSwaggerGen(c =>
             {

@@ -6,6 +6,7 @@ using Store.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Store.Test
@@ -23,7 +24,7 @@ namespace Store.Test
 
         [Fact]
         [Trait(nameof(ICustomerService.Find), "Success")]
-        public void GetCustomerById_Success()
+        public async Task GetCustomerById_Success()
         {
             var expected = new Customer
             {
@@ -35,9 +36,9 @@ namespace Store.Test
 
             customerRepositoryMock
                 .Setup(m => m.Find(expected.CustomerId))
-                .Returns(expected);
+                .ReturnsAsync(expected);
 
-            var customer = customerService.Find(expected.CustomerId);
+            var customer = await customerService.Find(expected.CustomerId);
 
             var actual = customer;
 
@@ -46,7 +47,7 @@ namespace Store.Test
 
         [Fact]
         [Trait(nameof(ICustomerService.GetCustomerFiltered), "Success")]
-        public void GetCustomer_Success()
+        public async Task GetCustomer_Success()
         {
             var expected = new List<Customer>()
             {
@@ -61,9 +62,9 @@ namespace Store.Test
 
             customerRepositoryMock
                 .Setup(m => m.GetCustomerFiltered(It.IsAny<Customer>()))
-                .Returns(expected);
+                .ReturnsAsync(expected);
 
-            var customers = customerService.GetCustomerFiltered(new Customer()
+            var customers = await customerService.GetCustomerFiltered(new Customer()
             {
                 CustomerId = Guid.NewGuid(),
                 Name = "Barack Obama",

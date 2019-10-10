@@ -31,8 +31,21 @@ namespace Store.Api
             CreateMap<SalesMan, SalesManGetResult>();
             CreateMap<SalesMan, SalesManPost>();
             CreateMap<SalesManPost, SalesMan>();
-
-            // SalesMan salesMan = mapper.Map<SalesManGet, SalesMan>(salesManGet);
+            CreateMap<PaymentGet, Payment>();
+            CreateMap<Payment, PaymentGet>();
+            CreateMap<PaymentPost, Payment>();
+            CreateMap<PaymentGetResult, Payment>();
+            CreateMap<Payment, PaymentGetResult>();
+            CreateMap<SaleGet, Sale>();
+            CreateMap<Sale, SaleGet>();
+            CreateMap<SalePost, Sale>();
+            CreateMap<SaleGetResult, Sale>();
+            CreateMap<Sale, SaleGetResult>();
+            CreateMap<ShoppingCartGet, ShoppingCart>();
+            CreateMap<ShoppingCart, ShoppingCartGet>();
+            CreateMap<ShoppingCartPost, ShoppingCart>();
+            CreateMap<ShoppingCartGetResult, ShoppingCart>();
+            CreateMap<ShoppingCart, ShoppingCartGetResult>();
         }
     }
 }
