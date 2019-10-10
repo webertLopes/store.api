@@ -1,2 +1,3 @@
 # store
-ddd project store in progress ...
+StoreAPI -- ddd hexagonal architecture project example. 
+
